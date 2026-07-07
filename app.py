@@ -49,12 +49,48 @@ def generate_sql(schema, question):
 
 
 EXAMPLES = [
+    # simple COUNT with a numeric filter
     ["CREATE TABLE head (age INTEGER)",
      "How many heads of the departments are older than 56?"],
+    # lookup by name
     ["CREATE TABLE table_11803648_17 (nationality VARCHAR, player VARCHAR)",
      "Where is Andre Petersson from?"],
+    # filter with two conditions
     ["CREATE TABLE employees (name VARCHAR, salary INTEGER, department VARCHAR)",
      "List the names of employees in the Sales department earning over 50000."],
+    # MAX aggregate
+    ["CREATE TABLE products (name VARCHAR, price INTEGER, category VARCHAR)",
+     "What is the most expensive product?"],
+    # MIN aggregate
+    ["CREATE TABLE flights (flight_no VARCHAR, duration INTEGER, airline VARCHAR)",
+     "Which flight has the shortest duration?"],
+    # AVG aggregate
+    ["CREATE TABLE students (name VARCHAR, grade INTEGER, class VARCHAR)",
+     "What is the average grade of students in class A?"],
+    # SUM aggregate
+    ["CREATE TABLE orders (order_id INTEGER, amount INTEGER, customer VARCHAR)",
+     "What is the total amount spent by customer John Smith?"],
+    # COUNT of everything
+    ["CREATE TABLE movies (title VARCHAR, year INTEGER, genre VARCHAR)",
+     "How many movies were released in 2020?"],
+    # ORDER BY / top result
+    ["CREATE TABLE cities (name VARCHAR, population INTEGER, country VARCHAR)",
+     "List the top 5 cities by population."],
+    # DISTINCT
+    ["CREATE TABLE sales (region VARCHAR, product VARCHAR, revenue INTEGER)",
+     "What are the distinct regions where products were sold?"],
+    # string / partial match
+    ["CREATE TABLE books (title VARCHAR, author VARCHAR, pages INTEGER)",
+     "Find all books written by an author whose name contains 'King'."],
+    # numeric range
+    ["CREATE TABLE cars (model VARCHAR, year INTEGER, mileage INTEGER)",
+     "Show cars made between 2015 and 2020."],
+    # GROUP BY with count
+    ["CREATE TABLE table_2891_4 (team VARCHAR, wins INTEGER, season VARCHAR)",
+     "How many wins does each team have?"],
+    # ordering ascending
+    ["CREATE TABLE marathon (runner VARCHAR, finish_time INTEGER, country VARCHAR)",
+     "Who had the fastest finish time?"],
 ]
 
 with gr.Blocks(title="Text-to-SQL") as demo:
