@@ -16,8 +16,8 @@ SYSTEM = ("You are a SQL expert. Given a database schema and a question, "
 tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_ID,
-    torch_dtype="auto",     # fp16 on GPU, fp32 on CPU
-    device_map="auto",
+    torch_dtype=torch.bfloat16,   # ~6GB instead of ~12GB at fp32
+    low_cpu_mem_usage=True,
 )
 model.eval()
 
